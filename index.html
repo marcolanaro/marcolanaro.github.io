@@ -1,1 +1,246 @@
-Index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Marco Lanaro">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="deepskyblue">
+    <title>Marco Lanaro</title>
+    <style>
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+      }
+      html, body {
+        height: 100%;
+      }
+      body {
+          background: linear-gradient(to right,aquamarine 0, deepskyblue 20%, deepskyblue 50%, deepskyblue 80%, sandybrown 100%);
+          text-align: center;
+          margin: 0;
+          font-family: 'Roboto';
+      }
+      body, header, footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      header, footer, .flipCard {
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+      }
+      header {
+        margin: 0.8em 0.8em 0.4em 0.8em;
+        flex: 3;
+        padding: 2em;
+      }
+      .flipCard {
+        transition: transform .3s, scale .3s, opacity .3s;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      .back > div {
+        padding: 2em;
+      }
+      footer {
+        margin: 0.4em 0.8em 0.8em 0.8em;
+        flex: 1;
+        padding: 2em 1.5em;
+        align-items: center;
+      }
+      picture.profile source, picture.profile img {
+        border-radius: 100%;
+      }
+      a {
+        color: deepskyblue;
+      }
+      footer > div {
+        width: 100%;
+        font-size: 1.2em;
+      }
+      div.contact {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      @media (min-width: 400px) and (max-width: 500px) {
+        footer > div {
+          width: 80%;
+        }
+      }
+      @media (min-width: 500px) and (max-width: 600px) {
+        footer > div {
+          width: 60%;
+        }
+      }
+      @media (min-width: 600px) and (max-width: 900px) {
+        footer > div {
+          width: 40%;
+        }
+      }
+      @media (min-width: 900px) {
+        footer > div {
+          width: 20%;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header class="header flipCard">
+      <picture class="profile">
+        <source srcset="img/profile@x1.jpg" media="(max-width: 800px)">
+        <source srcset="img/profile@x2.jpg" media="(min-width: 800px)">
+        <img src="img/profile@x2.jpg">
+      </picture>
+      <h1>Marco Lanaro</h1>
+      <div class="description"></div>
+    </header>
+    <div class="back flipCard" style="display: none;">
+      <div>
+        <h1>Ciao!</h1>
+        <p>Hi, I'm an Italian javascript developer.</p>
+        <p>I like to create amazing user interfaces, work on the user experience, usability and accessability of my web components.</p>
+        <h2>and now.... swipe me</h2>
+      </div>
+    </div>
+    <footer>
+      <div>
+        <div class="contact">
+          <i class="fa fa-linkedin"></i>
+          <a href="https://uk.linkedin.com/in/mlanaro">Linkedin</a>
+        </div>
+        <div class="contact">
+          <i class="fa fa-twitter"></i>
+          <a href="https://twitter.com/marcolanaro86">Twitter</a>
+        </div>
+        <div class="contact">
+          <i class="fa fa-github"></i>
+          <a href="https://github.com/marcolanaro">Github</a>
+        </div>
+        <div class="contact">
+          <i class="fa fa-facebook"></i>
+          <a href="https://www.facebook.com/marcolanaro">Facebook</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function() {
+        var $ = function(c) { return document.getElementsByClassName(c)[0] };
+        var setBackStyle = function(rect, clickCounter) {
+          $('back').style = 'position: absolute;'
+            + 'top: ' + rect.top + 'px;'
+            + 'bottom: ' + rect.bottom + 'px;'
+            + 'left: ' + rect.left + 'px;'
+            + 'right: ' + rect.right + 'px;'
+            + 'width: ' + rect.width + 'px;'
+            + 'height: ' + rect.height + 'px;';
+          $('back').style.transform = 'perspective( 50em ) rotateY(-180deg)';
+        };
+        var clickCounter = 0;
+        var header = $('header');
+        var headerRect = header.getBoundingClientRect();
+        setBackStyle(headerRect, clickCounter);
+        var isCardVisible = function() {
+          return clickCounter % 2 === 1;
+        };
+
+        var el = $('description');
+        var description = 'Click me!';
+        var intervalId;
+        var writeDescription = function () {
+          var letter = description.substr(0, 1);
+          description = description.substr(1, description.length - 1);
+          el.innerHTML = el.innerHTML + letter;
+          if (description.length <= 0) { clearInterval(intervalId); }
+        }
+        intervalId = setInterval(writeDescription, 100);
+
+        var handleClick = function() {
+          clickCounter += 1;
+          header.style.transform = 'perspective( 50em ) rotateY(' + 180 * (clickCounter % 2) + 'deg)';
+          $('back').style.transform = 'perspective( 50em ) rotateY(-' + 180 * Math.abs(clickCounter % 2 - 1) + 'deg)';
+        };
+
+        var resetCards = function() {
+          $('back').style.transition = 'none';
+          header.style.transform = 'translateY(-50em)';
+          clickCounter = 0;
+          requestAnimationFrame(function() {
+            $('back').style.transform = 'perspective( 50em ) rotateY(-180deg)';
+            header.transition = 'transform .3s, scale .3s, opacity .3s';
+            requestAnimationFrame(function() {
+              header.style = '';
+              $('back').style.opacity = '1';
+              $('back').style.transition = 'transform .3s, scale .3s, opacity .3s';
+            });
+          });
+        };
+
+        var touchStart = null, touchOffset;
+        var updateCards = function() {
+          if (touchStart && touchOffset) {
+            var rotateZ = touchOffset > 0 ? 60 : -60;
+            $('back').style['transform-origin'] = 'bottom';
+            $('back').style.transform = 'rotateZ(' + rotateZ + 'deg) scale(0.9)';
+            $('back').style.opacity = '0';
+            header.style.transition = 'none';
+            setTimeout(resetCards, 1000);
+          }
+        };
+
+        var getXpos = function(e) {
+          return e.pageX || e.touches[0].pageX;
+        };
+
+        var handleStart = function(e) {
+          if (isCardVisible()) {
+            touchStart = getXpos(e);
+          }
+        };
+
+        var handleEnd = function(e) {
+          if (!touchOffset) {
+            handleClick();
+          } else {
+            updateCards();
+          }
+          touchStart = null;
+          touchOffset = null;
+        };
+
+        var handleMove = function(e) {
+          e.preventDefault();
+          if (isCardVisible()) {
+            touchOffset = (getXpos(e) - touchStart) / document.documentElement.clientWidth;
+          }
+        };
+
+        if ("ontouchstart" in window) {
+          document.addEventListener('touchstart', handleStart, false);
+          document.addEventListener('touchend', handleEnd, false);
+          document.addEventListener('touchmove', handleMove, false);
+        } else {
+          document.addEventListener('mousedown', handleStart, false);
+          document.addEventListener('mousemove', handleMove, false);
+          document.addEventListener('mouseup', handleEnd, false);
+        }
+      }());
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-75623399-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
