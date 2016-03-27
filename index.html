@@ -216,7 +216,6 @@
         };
 
         var handleMove = function(e) {
-          e.preventDefault();
           if (isCardVisible()) {
             touchOffset = (getXpos(e) - touchStart) / document.documentElement.clientWidth;
           }
