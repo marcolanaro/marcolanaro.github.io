@@ -101,13 +101,13 @@
         <img src="img/profile@x2.jpg">
       </picture>
       <h1>Marco Lanaro</h1>
-      <div class="description"></div>
+      <div>Click me!</div>
     </header>
     <div class="back flipCard" style="display: none;">
       <div>
         <h1>Ciao!</h1>
-        <p>Hi, I'm an Italian javascript developer.</p>
-        <p>I like to create amazing user interfaces, work on the user experience, usability and accessability of my web components.</p>
+        <p>I'm an Italian javascript developer.</p>
+        <p>I like creating amazing user interfaces, work on the user experience, usability and accessability of my web components.</p>
         <h2>and now.... swipe me</h2>
       </div>
     </div>
@@ -151,17 +151,6 @@
         var isCardVisible = function() {
           return clickCounter % 2 === 1;
         };
-
-        var el = $('description');
-        var description = 'Click me!';
-        var intervalId;
-        var writeDescription = function () {
-          var letter = description.substr(0, 1);
-          description = description.substr(1, description.length - 1);
-          el.innerHTML = el.innerHTML + letter;
-          if (description.length <= 0) { clearInterval(intervalId); }
-        }
-        intervalId = setInterval(writeDescription, 100);
 
         var handleClick = function() {
           clickCounter += 1;
