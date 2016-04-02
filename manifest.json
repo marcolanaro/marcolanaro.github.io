@@ -6,7 +6,7 @@
   "background_color": "deepskyblue",
   "theme_color": "deepskyblue",
   "lang": "en-GB",
-  ​​"orientation": "landscape",
+  "orientation": "landscape",
   "icons": [{
     "src": "images/favicons/48x48.png",
     "sizes": "48x48",
