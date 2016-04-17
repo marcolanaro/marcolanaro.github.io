@@ -590,21 +590,10 @@
           }
         };
 
-        // var handleEnd = function(e) {
-        // };
-        //
-        // var handleMove = function(e) {
-        //
-        // };
-
         if ("ontouchstart" in window) {
           $('touchable').addEventListener('touchstart', handleStart, false);
-          // document.addEventListener('touchend', handleEnd, false);
-          // document.addEventListener('touchmove', handleMove, false);
         } else {
           $('touchable').addEventListener('mousedown', handleStart, false);
-          // document.addEventListener('mousemove', handleMove, false);
-          // document.addEventListener('mouseup', handleEnd, false);
         }
         $('back-button').addEventListener('click', close, false);
 
