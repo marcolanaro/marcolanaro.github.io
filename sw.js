@@ -1,5 +1,6 @@
 importScripts('node_modules/sw-toolbox/sw-toolbox.js');
 
+
 toolbox.precache([
   '/',
   '/index.html',
@@ -8,6 +9,7 @@ toolbox.precache([
   '/fonts/fontawesome.woff',
   '/fonts/roboto.woff',
 ]);
+
 
 toolbox.router.get('/', toolbox.fastest);
 toolbox.router.get('/index.html', toolbox.fastest);
