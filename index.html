@@ -8,7 +8,7 @@
 
     <meta property="og:url" content="https://lanaro.net">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Marco Lanaro">
+    <meta property="og:title" content="Marco Lanaro - IT Consultant, web developer, javascript expert">
     <meta property="og:description" content="Javascript expert, analyst, software architect, developer. I can deliver high quality products. London based.">
 
     <meta name="keywords" content="consulting, javascript, nodejs, development, software engineering, react, angular">
@@ -49,9 +49,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <title>Marco Lanaro</title>
+    <title>Marco Lanaro - Javascript Consultant</title>
     <link rel="canonical" href="https://lanaro.net">
-
     <style>
       @font-face {
         font-family: 'Roboto';
@@ -68,78 +67,18 @@
       html, body {
         height: 100%;
         overflow: hidden;
+        margin: 0;
+        font-family: 'Roboto';
+        font-size: 16px;
+        line-height: 20px;
+        color: #444;
+        position: relative;
       }
-      body {
-          background: linear-gradient(to right,aquamarine 0, deepskyblue 20%, deepskyblue 50%, deepskyblue 80%, sandybrown 100%);
-          text-align: center;
-          margin: 0;
-          font-family: 'Roboto';
-      }
-      body, header, footer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      header, footer, .flipCard {
-        background-color: white;
-        border-radius: 2px;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
-      }
-      header {
-        margin: 0.8em 0.8em 0.4em 0.8em;
-        flex: 3;
-        padding: 2em;
-      }
-      .flipCard {
-        transition: transform .3s, scale .3s, opacity .3s;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-      }
-      .back > div {
-        padding: 2em;
-      }
-      footer {
-        margin: 0.4em 0.8em 0.8em 0.8em;
-        flex: 1;
-        padding: 2em 1.5em;
-        align-items: center;
+      h2, .centered {
+        text-align: center;
       }
       picture.profile source, picture.profile img {
         border-radius: 100%;
-      }
-      a {
-        color: deepskyblue;
-      }
-      footer > div {
-        width: 100%;
-        font-size: 1.2em;
-      }
-      div.contact {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      @media (min-width: 400px) and (max-width: 500px) {
-        footer > div {
-          width: 80%;
-        }
-      }
-      @media (min-width: 500px) and (max-width: 600px) {
-        footer > div {
-          width: 60%;
-        }
-      }
-      @media (min-width: 600px) and (max-width: 900px) {
-        footer > div {
-          width: 40%;
-        }
-      }
-      @media (min-width: 900px) {
-        footer > div {
-          width: 20%;
-        }
       }
       .fa {
         display: inline-block;
@@ -161,135 +100,517 @@
       .fa-github:before {
         content: "\f09b";
       }
+      .fa-male:before {
+        content: "\f183";
+      }
+      .fa-desktop:before {
+        content: "\f108";
+      }
+      .fa-envelope-o:before {
+        content: "\f003";
+      }
+      .fa-chevron-left:before {
+        content: "\f053";
+      }
+      .tri {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-style: solid;
+      }
+      .tri-top {
+        border-color: rgb(34, 83, 120) transparent transparent transparent;
+        border-width: 40vh 60vw 0 40vw;
+      }
+      .tri-right {
+        border-color: transparent rgb(22, 149, 163) transparent transparent;
+        border-width: 40vh 60vw 60vh 0;
+      }
+      .tri-bottom {
+        border-color: transparent transparent rgb(172, 240, 242) transparent;
+        border-width: 0 40vw 40vh 60vw;
+      }
+      .tri-left {
+        border-color: transparent transparent transparent rgb(243, 255, 226);
+        border-width: 60vh 0 40vh 60vw;
+      }
+      .box-top {
+        position: absolute;
+        background-color: rgb(34, 83, 120);
+        color: white;
+        top: 10%;
+        bottom: 80%;
+        left: 30%;
+        right: 40%;
+      }
+      .box-right {
+        position: absolute;
+        background-color: rgb(22, 149, 163);
+        color: white;
+        top: 35%;
+        bottom: 55%;
+        left: 60%;
+        right: 10%;
+      }
+      .box-bottom {
+        color: rgb(235, 127, 0);
+        background-color: rgb(172, 240, 242);
+        position: absolute;
+        top: 80%;
+        bottom: 10%;
+        left: 40%;
+        right: 30%;
+      }
+      .box-left {
+        position: absolute;
+        color: rgb(235, 127, 0);
+        background-color: rgb(243, 255, 226);
+        top: 55%;
+        bottom: 35%;
+        left: 10%;
+        right: 60%;
+      }
+      .icon {
+        font-size: 2rem;
+        position: relative;
+      }
+      .animated {
+        transition: transform .2s;
+        transform: scale(0);
+      }
+      .back-button {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        width: 1rem;
+        height: 1rem;
+        transition: transform .2s;
+      }
+      .touchable {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      .card {
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+        position: absolute;
+        top: 4rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        transition: transform .2s;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+      .icon-as-title {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        margin-left: -1rem;
+      }
+      .icon-on-transforms {
+        transition: transform .2s;
+      }
+      .padding {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .justified {
+        text-align: justify;
+      }
+      .contacts > div {
+        margin: 24px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <header class="header flipCard">
-      <picture class="profile">
-        <source srcset="images/profile@x1.jpg" media="(max-width: 800px)">
-        <source srcset="images/profile@x2.jpg" media="(min-width: 800px)">
-        <img src="images/profile@x2.jpg">
-      </picture>
-      <h1>Marco Lanaro</h1>
-      <div>Click me!</div>
-    </header>
-    <div class="back flipCard" style="display: none;">
-      <div>
-        <h1>Ciao!</h1>
-        <p>I'm an Italian javascript developer.</p>
-        <p>I like creating amazing user interfaces, work on the user experience, usability and accessability of my web components.</p>
-        <h2>and now.... swipe me</h2>
-      </div>
+    <div class="tri tri-top"></div>
+    <div class="tri tri-right"></div>
+    <div class="tri tri-bottom"></div>
+    <div class="tri tri-left"></div>
+
+    <div class="box-top centered">
+      <div class="fa fa-male icon icon-top"></div>
+      <div>about me</div>
     </div>
-    <footer>
-      <div>
-        <div class="contact">
+    <div class="box-right centered">
+      <div class="fa fa-desktop icon icon-right"></div>
+      <div>work</div>
+    </div>
+    <div class="box-bottom centered">
+      <div class="fa fa-envelope-o icon icon-bottom"></div>
+      <div>contacts</div>
+    </div>
+    <div class="box-left centered">
+      <div class="fa fa-twitter icon icon-left"></div>
+      <div>tweets</div>
+    </div>
+
+    <div class="box-top animated animated-top"></div>
+    <div class="box-right animated animated-right"></div>
+    <div class="box-bottom animated animated-bottom"></div>
+    <div class="box-left animated animated-left"></div>
+
+    <div class="touchable"></div>
+
+    <a class="back-button" style="transform: translateY(-3rem)">
+      <div class="fa fa-chevron-left"></div>
+    </a>
+
+    <main class="card card-top padding" style="transform: translateY(120%)">
+      <h2>About me</h2>
+      <p>Hi, I am Marco, 30 years old, born and bread in Italy. Pizza eater since 1986.</p>
+      <p>
+        I work as a consultant helping companies turning ideas into products.
+      </p>
+      <figure class="centered">
+        <picture class="profile">
+          <source srcset="images/profile@x1.jpg" media="(max-width: 800px)">
+          <source srcset="images/profile@x2.jpg" media="(min-width: 800px)">
+          <img src="images/profile@x2.jpg">
+        </picture>
+      </figure>
+      <p>
+        I am an engineer specialized in information technologies.
+      </p>
+      <p>
+        I have been working in this field for almost seven years now and I have gained a lot of experience in implementing mobile web applications and managing Microsoft infrastructures.
+      </p>
+      <p>
+        In the last years I focused my skills on web architecture using javascript framework like <a href="https://angular.io/">Angular</a> and <a href="https://facebook.github.io/react/">React</a>/<a href="https://github.com/reactjs/redux">Redux</a>, writing <a href="https://nodejs.org/en/">node.js</a> microservices and mobile app using the <a href="https://cordova.apache.org/">Cordova</a> hybrid layer or <a href="https://facebook.github.io/react-native/">react-native</a>.
+      </p>
+    </main>
+    <section class="card card-right padding justified" style="transform: translateY(120%)">
+      <h2>Work</h2>
+      <h3>Trainline</h3>
+      <p>Agile Developer</p>
+      <small>July 2015 – Present | London, United Kingdom</small>
+      <p>
+        Full agile build process working with a continuous delivery environment. Drive direction on use of CSS and JavaScript frameworks to create a full responsive website, as well as use of appropriate testing frameworks at a JavaScript unit level (Mocha, Jasmine) and browser driven acceptance test level (CasperJS, Webdriver.io).
+        <br>
+        Rebranded the entire booking flow using LESS and Knockout.js in a .NET MVC environment; CasperJs acceptance tests.
+        <br>
+        Implemented the new payment confirmation page using pure react components.
+        <br>
+        Implemented a spike around the new international flow using react with inline style and redux as flux architecture. Unit tests implemented with mocha.
+        <br>
+        Leaded the development on the entire implementation of the new booking flow on mobile web. Used as less dependences as possible and get a first load in less then 1.5 seconds. We achieve a great goal using flexbox inline styles on react UI components, no external UI libraries. Good reusability of react components achieved by normalizing all the data on the node.js server before landing on the redux store. Functional programming and one way data flow permitted us to be agile and write completely dumb, stateless and easy to test components. Good separation of concerns thanks to proper actions creations that were dispatching only the payload needed to the reducer functions to manipulate the state. Unit tests using Mocha and browser based acceptance tests using Webdriver.io.
+      </p>
+      <hr>
+      <h3>SmartStay, Inc</h3>
+      <p>CTO</p>
+      <small>June 2014 – March 2016 (1 year 10 months)</small>
+      <p>
+        Implemented a web application that allows hotels to interact with its guests. This application offers our partners the possibility to develop a mobile technology platform in order to engage and interface with their stakeholders.
+        <br>
+        Developed a single page web app using angular.js framework and parse.com services, bootstrap template as scaffold.
+        <br>
+        Developed the dashboard provided to our partners to control the informations to provide to their customers. It was a single page web app implemented using angular.js MVC framework, bootstrap template and REST services through parse.com cloud infrastructure.
+        <br>
+        Implemented the android version of the mobile app. Cordova platform used to build the native mobile application using angular.js MVC framework and material design for angular as UI/UX framework; push notifications provided thanks to parse.com services.
+        <br>
+        Worked in a multicultural environment using agile methodologies; the project has been presented at the BoomStartup Demo Day 2014.
+      </p>
+      <hr>
+      <h3>Multiconsult</h3>
+      <p>Consultant</p>
+      <small>July 2012 – June 2015 (3 years) | Vicenza Area, Italy</small>
+      <p>
+        As a consultant I need to establish the business need of IT Strategy’s customers and deliver technical solutions to meet clients requirements.
+        <br>
+        Managed many Microsoft infrastructure: windows server 2000 to 2012 R2, exchange, sharepoint, terminal server and office 365.
+        <br>
+        Planned and implemented a dozen of office 365 projects.
+        <br>
+        Profitable use of Microsoft Sharepoint Online as back-end infrastructure to rapidly achieve results and to develop automated business workflow.
+        <br>
+        Deployed enterprise search sites. Used sharepoint libraries and shared folders as search repositories. Managed crawl properties, query and refiners; personalized results type and display templates.
+        <br>
+        Implemented intranet web portals for our customers. Used JQuery framework and Jasmine unit testing library to develop the front-end. In most of the cases I worked in an HTML5 and CSS3 environment where media query and responsive design were a must.
+        <br>
+        Deep knowledge in the use of angular framework and MV* patterns to improve the maintainability of the code.
+        <br>
+        Held business meetings with ours customers to understand how to brand their intranet and how to map functional into technical requirements.
+      </p>
+      <hr>
+      <h3>Soludia Sarl</h3>
+      <p>Consultant</p>
+      <small>February 2015 – March 2015 (2 months) | Toulouse Area, France</small>
+      <p>
+        Planned a migration and consolidation of an old infrastructure composed by Windows 2000 domain controller, Exchange 2000 email server, Windows server 2000 as file system, no DHCP server.
+        <br>
+        Managed critical schedule of operative activity because the needs to dismiss Exchange 2000 before installing a newer domain controller.
+        <br>
+        No downtime to any resources; the only impact was using Outlook Web Access for one day (less then 50 outlook clients).
+        <br>
+        Completed all the consolidation project in one week: the customer upgraded from windows 2000 environment to windows 2012 R2 domain controller, dns, dhcp, dirsync, office 365, terminal server.
+      </p>
+      <hr>
+      <h3>Bellco Srl</h3>
+      <p>Consultant</p>
+      <small>June 2014 – November 2014 (6 months) | Modena Area, Italy</small>
+      <p>
+        Migrated the existing exchange 2003 infrastructure to Office 365.
+        <br>
+        Planned and implemented a staged migration in synergy with active directory synchronization and password syncronization.
+        <br>
+        Released the platform to the six branches around the world, about 350 outlook clients.
+        <br>
+        Released important updates and sign in assistant through group policies.
+        <br>
+        Developed sharepoint intranet/extranet area. Used massively javascript rest API, search engine and workflow. Developed web app using HTML5 and CSS3 + JQuery library.
+      </p>
+      <hr>
+      <h3>Gruppo Balletta Srl</h3>
+      <p>Consultant</p>
+      <small>February 2014 – March 2014 (2 months) | Caserta Area, Italy</small>
+      <p>
+        Assisted IT Manager to plan and define how to migrate and integrate as-is mailbox infrastructure.
+        <br>
+        Migrated 250 linux based mailbox to Microsoft Exchange Online Infrastructures. Managed Office 365 IMAP migration tools, held a conference to educate users to the use of new tools.
+      </p>
+      <hr>
+      <h3>Gruppo Battistolli</h3>
+      <p>Consultant</p>
+      <small>September 2012 – December 2013 (1 year 4 months) | Vicenza Area, Italy</small>
+      <p>
+        Helped the IT staff to migrate the existing infrastructure of e-mail exchange. Was chosen a hybrid environment. Implemented the federation of identity between active directory and Windows Azure Active Directory as well as the exchange federation with Office 365.
+        <br>
+        Studied how to renew the company's intranet using Microsoft Shrepoint Online. Used CSS, HTML, Javascript, XSL to implement a branding of sharepoint online. Also used SharePoint Designer 2010/2013 to implement custom workflow.
+      </p>
+      <hr>
+      <h3>PortAventura</h3>
+      <p>Consultant</p>
+      <small>October 2012 – November 2012 (2 months) | Tarragona Area, Spain</small>
+      <p>
+        Studied in depth which costs are incurred by the IT department. Analyzed the performance of the resources involved, rated current projects and any future plans for a more efficient and less costly information infrastructure.
+        <br>
+        Open a competition to the major hardware vendors for a project of server virtualization. Talked with Dell, HP, IBM and Icot to collect the necessary technical requirements to implement a physical to virtual consolidation.
+      </p>
+      <hr>
+      <h3>Accenture</h3>
+      <p>Analyst</p>
+      <small>January 2011 – June 2012 (1 year 6 months) | Milan Area, Italy</small>
+      <p>
+        Defining the most appropriate integration patterns to send integration flows between company of Eni Group. Organizing and conducting business meetings with client to collect functional requirements. Supported management in planning and achieving project goals, coordinated staff in completing activities. Identified system integration improvements and communicated them effectively.
+        <br>
+        Developing solutions that involve integration middleware such as Tibco BW, SAP PI, or Managed File Transfer (MFT) software like Tibco Simple File Transfer (SFT), Connect Direct (CD) and business to business (B2B) solutions. I analyzed, write technical design and develop any above integration layer used.
+        <br>
+        Perfect knowledge of scheduling tools. Job management as a service in a business workflow to improve the quality and decrease costs and risks. Unified different IT silos (system, database, data, ERP-SAP) in a cross solution ensuring visibility and communication between business and IT. The event driven solutions studied and used were IMT, Redwood, Central Process Scheduling (CPS) by Redwood, Workload Automation (WA) by CA. In less than one year I become the principal resource of reference for project manager and all the application maintenance group for what concerns the scheduling of the business, IT, technical process.
+        <br>
+        Document management and preparation of analysis regarding the architecture of integration. Kept detailed plans with Project Server 2010, Gantt charts to manage activities like Program Management Office (PMO).
+      </p>
+      <hr>
+      <h3>GrandeBlu</h3>
+      <p>Founder & CIO</p>
+      <small>May 2004 – December 2008 (4 years 8 months) | Italy</small>
+      <p>
+        I developed a role play game. That was implemented on a web app in multiple themed chat. Two years later the game was played nationwide and my interest in doing better took me to rewrite all the code using innovation technologies and an artistic vision to develop applications: PHP5 and MySQL server side; javascript with the prototypejs framework client side.
+        The game application has been successful and in 2006/2007 there were two hundred of users at pick in the mean time, fifteen thousand of registered users.
+        I sell that my first project to a manager in the Padua Area to dedicate myself to the studies. During the years I always was interested to web technologies, I worked with comet server and passed to ruby languages, I tried a lot of client and server framework but only in 2010 i fall in love: I discover node.js, the innovative platform languages that permit me to create all I want in javascript.
+      </p>
+    </section>
+    <div class="card card-bottom padding" style="transform: translateY(120%)">
+      <h2>Contacts</h2>
+      <div class="contacts">
+        <div>
           <i class="fa fa-linkedin"></i>
           <a href="https://uk.linkedin.com/in/mlanaro">Linkedin</a>
         </div>
-        <div class="contact">
+        <div>
           <i class="fa fa-twitter"></i>
           <a href="https://twitter.com/marcolanaro86">Twitter</a>
         </div>
-        <div class="contact">
+        <div>
           <i class="fa fa-github"></i>
           <a href="https://github.com/marcolanaro">Github</a>
         </div>
-        <div class="contact">
+        <div>
           <i class="fa fa-facebook"></i>
           <a href="https://www.facebook.com/marcolanaro">Facebook</a>
         </div>
       </div>
-    </footer>
+    </div>
+    <div class="card card-left" style="transform: translateY(120%)">
+      <a class="twitter-timeline" href="https://twitter.com/marcolanaro86" data-widget-id="721391169226350592">Tweet di @marcolanaro86</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
     <script>
-      (function() {
+      var ML = (function() {
         var $ = function(c) { return document.getElementsByClassName(c)[0] };
-        var setBackStyle = function(rect, clickCounter) {
-          $('back').style = 'position: absolute;'
-            + 'top: ' + rect.top + 'px;'
-            + 'bottom: ' + rect.bottom + 'px;'
-            + 'left: ' + rect.left + 'px;'
-            + 'right: ' + rect.right + 'px;'
-            + 'width: ' + rect.width + 'px;'
-            + 'height: ' + rect.height + 'px;';
-          $('back').style.transform = 'perspective( 50em ) rotateY(-180deg)';
-        };
-        var clickCounter = 0;
-        var header = $('header');
-        var headerRect = header.getBoundingClientRect();
-        setBackStyle(headerRect, clickCounter);
-        var isCardVisible = function() {
-          return clickCounter % 2 === 1;
+
+        route = '';
+
+        var targets_label = ['top', 'right', 'bottom', 'left'];
+
+        var getTargetColor = function(target) {
+          var colors = {
+            top: 'white',
+            right: 'white',
+            bottom: 'rgb(235, 127, 0)',
+            left: 'rgb(235, 127, 0)',
+          };
+          return colors[target];
+        }
+
+        var targets = targets_label.map(function(label) {
+          return $('box-' + label).getBoundingClientRect();
+        });
+
+        var centerOfBlock = function(rect) {
+          return {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+          };
         };
 
-        var handleClick = function() {
-          clickCounter += 1;
-          header.style.transform = 'perspective( 50em ) rotateY(' + 180 * (clickCounter % 2) + 'deg)';
-          $('back').style.transform = 'perspective( 50em ) rotateY(-' + 180 * Math.abs(clickCounter % 2 - 1) + 'deg)';
+        var getClickPos = function(e) {
+          return {
+            x: e.pageX || e.touches[0].pageX,
+            y: e.pageY || e.touches[0].pageY,
+          };
         };
 
-        var resetCards = function() {
-          $('back').style.transition = 'none';
-          header.style.transform = 'translateY(-50em)';
-          clickCounter = 0;
+        var distance = function(pos, target) {
+          var pos_target = centerOfBlock(target);
+          var x_diff = pos.x - pos_target.x;
+          var y_diff = pos.y - pos_target.y;
+          return Math.sqrt(x_diff * x_diff + y_diff * y_diff);
+        }
+
+        var distances = function(clickPos, targets) {
+          return targets.map(function(target) {
+            return distance(clickPos, target);
+          });
+        }
+
+        var getClickedTarget = function(e) {
+          var pos = getClickPos(e);
+          var target = distances(pos, targets).reduce(function(prev, curr, index) {
+            if (curr < prev.value) {
+              return { value: curr, index: index };
+            }
+            return prev;
+          }, { value: Infinity, index: -1 });
+          return targets_label[target.index];
+        }
+
+        var toogleBackButton = function(target) {
+          if ($('back-button').style.transform === '') {
+            $('back-button').style.transform = 'translateY(-3rem)';
+            return;
+          }
+          $('back-button').style.color = getTargetColor(target);
+          $('back-button').style.transform = '';
+        }
+
+        var toogleCard = function(target) {
+          if ($('card-' + target).style.transform === '') {
+            $('card-' + target).style.transform = 'translateY(120%)';
+            return;
+          }
+          $('card-' + target).style.transform = '';
+        }
+
+        var toggleBackground = function(target) {
+          if ($('animated-' + target).style.transform === '') {
+            $('animated-' + target).style.transform = 'scale(20)';
+            return;
+          }
+          $('animated-' + target).style.transform = '';
+        }
+
+        var close = function(e) {
+          toogleBackButton(route);
+          toogleCard(route);
+          toggleBackground(route);
+          var el = $('icon-' + route);
+          flip({
+            el: el,
+            last: function() {
+              el.classList.remove('icon-as-title');
+            },
+            transition: 'transform .2s',
+          });
+          var resetZindex = function() {
+            el.style.zIndex = 'initial';
+            el.removeEventListener('transitionend', resetZindex);
+          }
+          el.addEventListener('transitionend', resetZindex);
+          route = '';
+        }
+
+        var open = function(target) {
+          toggleBackground(target);
+          toogleBackButton(target);
+          toogleCard(target);
+          var el = $('icon-' + target);
+          el.style.zIndex = 1;
+          flip({
+            el: el,
+            last: function() {
+              el.classList.add('icon-as-title');
+            },
+            transition: 'transform .2s',
+          });
+          route = target;
+        }
+
+        var flip = function(opt) {
           requestAnimationFrame(function() {
-            $('back').style.transform = 'perspective( 50em ) rotateY(-180deg)';
-            header.transition = 'transform .3s, scale .3s, opacity .3s';
+            var el = opt.el;
+            var first = el.getBoundingClientRect();
+            opt.last();
+            var last = el.getBoundingClientRect();
+            var x = parseInt(first.left - last.left, 10);
+            var y = parseInt(first.top - last.top, 10);
+            el.style.transition = '';
+            el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
             requestAnimationFrame(function() {
-              header.style = '';
-              $('back').style.opacity = '1';
-              $('back').style.transition = 'transform .3s, scale .3s, opacity .3s';
+              el.style.transition = opt.transition;
+              el.style.transform = '';
             });
           });
-        };
-
-        var touchStart = null, touchOffset;
-        var updateCards = function() {
-          if (touchStart && touchOffset) {
-            var rotateZ = touchOffset > 0 ? 60 : -60;
-            $('back').style['transform-origin'] = 'bottom';
-            $('back').style.transform = 'rotateZ(' + rotateZ + 'deg) scale(0.9)';
-            $('back').style.opacity = '0';
-            header.style.transition = 'none';
-            setTimeout(resetCards, 1000);
-          }
-        };
-
-        var getXpos = function(e) {
-          return e.pageX || e.touches[0].pageX;
-        };
+        }
 
         var handleStart = function(e) {
-          if (isCardVisible()) {
-            touchStart = getXpos(e);
+          if (route === '') {
+            var target = getClickedTarget(e);
+            open(target);
           }
         };
 
-        var handleEnd = function(e) {
-          if (!touchOffset) {
-            handleClick();
-          } else {
-            updateCards();
-          }
-          touchStart = null;
-          touchOffset = null;
-        };
-
-        var handleMove = function(e) {
-          if (isCardVisible()) {
-            touchOffset = (getXpos(e) - touchStart) / document.documentElement.clientWidth;
-          }
-        };
+        // var handleEnd = function(e) {
+        // };
+        //
+        // var handleMove = function(e) {
+        //
+        // };
 
         if ("ontouchstart" in window) {
-          document.addEventListener('touchstart', handleStart, false);
-          document.addEventListener('touchend', handleEnd, false);
-          document.addEventListener('touchmove', handleMove, false);
+          $('touchable').addEventListener('touchstart', handleStart, false);
+          // document.addEventListener('touchend', handleEnd, false);
+          // document.addEventListener('touchmove', handleMove, false);
         } else {
-          document.addEventListener('mousedown', handleStart, false);
-          document.addEventListener('mousemove', handleMove, false);
-          document.addEventListener('mouseup', handleEnd, false);
+          $('touchable').addEventListener('mousedown', handleStart, false);
+          // document.addEventListener('mousemove', handleMove, false);
+          // document.addEventListener('mouseup', handleEnd, false);
         }
+        $('back-button').addEventListener('click', close, false);
+
+        return {
+          route: route,
+        };
       }());
     </script>
     <script>
