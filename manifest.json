@@ -3,8 +3,8 @@
   "short_name": "Marco Lanaro",
   "start_url": "./?utm_source=web_app_manifest",
   "display": "fullscreen",
-  "background_color": "#ACF0F2",
-  "theme_color": "#ACF0F2",
+  "background_color": "#03a9f4",
+  "theme_color": "#03a9f4",
   "lang": "en-GB",
   "orientation": "landscape",
   "icons": [{
