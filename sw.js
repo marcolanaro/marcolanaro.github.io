@@ -1,21 +1,30 @@
-importScripts('node_modules/sw-toolbox/sw-toolbox.js');
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-toolbox.precache([
-  '/',
-  '/index.html',
-  '/images/profile@x1.jpg',
-  '/images/profile@x2.jpg',
-  '/images/webshareapi.png',
-  '/images/paymentrequestapi.png',
-  '/images/lanaro.jpg',
-]);
+importScripts(
+  "precache-manifest.b7a5757a9305a5f33ed2ff2e037d5802.js"
+);
 
+workbox.skipWaiting();
+workbox.clientsClaim();
 
-toolbox.router.get('/', toolbox.fastest);
-toolbox.router.get('/index.html', toolbox.fastest);
-toolbox.router.get('/images/profile@x1.jpg', toolbox.fastest);
-toolbox.router.get('/images/profile@x2.jpg', toolbox.fastest);
-toolbox.router.get('/images/webshareapi.png', toolbox.fastest);
-toolbox.router.get('/images/paymentrequestapi.png', toolbox.fastest);
-toolbox.router.get('/images/lanaro.jpg', toolbox.fastest);
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

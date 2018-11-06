@@ -5,5 +5,7 @@
 
       ga('create', 'UA-75623399-1', 'auto');
       ga('send', 'pageview');</script><script>if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js');
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('/sw.js');
+        });
       }</script><script type="text/javascript" src="app.2cc4ddd92f861d14dd78.js"></script></body></html>
